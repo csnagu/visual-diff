@@ -18,12 +18,8 @@ const Home: NextPage = () => {
 
       <footer className="mt-2 pt-2 border-t">
         Powered by{" "}
-        <a href="https://github.com/kpdecker/jsdiff" target="_blank" rel="noopener noreferrer">
-          jsdiff
-        </a>
-        {" and "}
-        <a href="https://diff2html.xyz/" target="_blank" rel="noopener noreferrer">
-          diff2html
+        <a href="https://nagu.dev" target="_blank" rel="noopener noreferrer">
+          nagu.dev
         </a>
       </footer>
     </div>
