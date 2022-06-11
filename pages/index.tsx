@@ -16,7 +16,7 @@ const Home: NextPage = () => {
         <Differ />
       </main>
 
-      <footer>
+      <footer className="mt-2 pt-2 border-t">
         Powered by{" "}
         <a href="https://github.com/kpdecker/jsdiff" target="_blank" rel="noopener noreferrer">
           jsdiff
