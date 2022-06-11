@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { createPatch } from "diff";
 import { parse, html } from "diff2html";
 import { DiffFile } from "diff2html/lib/types";
+import { renderToString } from "react-dom/server";
 
 type diffValues = {
   oldContent: string;
@@ -38,6 +39,17 @@ const Differ = () => {
     setState({ ...state, [name]: value });
   };
 
+  const copyTextToClipboard = (text: string): void => {
+    navigator.clipboard.writeText(text).then(
+      () => {
+        console.log("Successfully copying to clipboard");
+      },
+      (error) => {
+        console.error("Failed to copy to clipboard: ", error);
+      },
+    );
+  };
+
   const DeclareDiffCss = (): JSX.Element => (
     <link
       rel="stylesheet"
@@ -63,6 +75,16 @@ const Differ = () => {
             value={state.newContent}
             onChange={handleChange}
           />
+        </span>
+        <span className="flex justify-center m-4">
+          <button
+            onClick={() =>
+              copyTextToClipboard(renderToString(DeclareDiffCss()) + "\n" + state.diffHtml)
+            }
+            className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+          >
+            Copy HTML
+          </button>
         </span>
         <div dangerouslySetInnerHTML={{ __html: state.diffHtml || "<p>Preview Here...</p>" }} />
       </main>
