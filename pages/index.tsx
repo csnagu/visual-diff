@@ -17,9 +17,6 @@ const Home: NextPage = () => {
       </main>
 
       <footer className="mt-2 pt-2 border-t">
-        <a href="https://nagu.dev" target="_blank" rel="noopener noreferrer">
-          nagu.dev
-        </a>
       </footer>
     </div>
   );
